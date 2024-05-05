@@ -1,4 +1,4 @@
-import React from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import {
   About,
   Cart,
@@ -6,28 +6,63 @@ import {
   Error,
   HomeLayout,
   Landing,
+  Login,
   Orders,
   Products,
   Register,
   SingleProduct,
 } from './pages';
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <HomeLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        index: true,
+        element: <Landing />,
+      },
+      {
+        path: 'products',
+        element: <Products />,
+      },
+      {
+        path: 'products/:id',
+        element: <SingleProduct />,
+      },
+      {
+        path: 'cart',
+        element: <Cart />,
+      },
+      {
+        path: 'about',
+        element: <About />,
+      },
+      {
+        path: 'checkout',
+        element: <Checkout />,
+      },
+      {
+        path: 'orders',
+        element: <Orders />,
+      },
+    ],
+  },
+  {
+    path: '/login',
+    element: <Login />,
+    errorElement: <Error />,
+  },
+  {
+    path: '/register',
+    element: <Register />,
+    errorElement: <Error />,
+  },
+]);
+
 function App() {
-  return (
-    <React.Fragment>
-      <h1 className='text-3xl font-bold underline'>Hello World</h1>
-      <About />
-      <Cart />
-      <Checkout />
-      <Error />
-      <HomeLayout />
-      <Landing />
-      <Orders />
-      <Products />
-      <Register />
-      <SingleProduct />
-    </React.Fragment>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
