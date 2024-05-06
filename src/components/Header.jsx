@@ -6,10 +6,10 @@ const Header = () => {
       <div className='align-element flex justify-center sm:justify-end'>
         {/* USER         */}
         <div className='flex gap-x-6 justify-center items-center'>
-          <Link to='/login' className='link link-over text-xs sm:text-sm'>
+          <Link to='/login' className='link link-hover text-xs sm:text-sm'>
             Sign in / Guest
           </Link>
-          <Link to='/register' className='link link-over text-xs sm:text-sm'>
+          <Link to='/register' className='link link-hover text-xs sm:text-sm'>
             Create Account
           </Link>
         </div>
