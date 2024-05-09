@@ -1,4 +1,5 @@
 import axios from 'axios';
+import React from 'react';
 
 const productionUrl = 'https://strapi-store-server.onrender.com/api';
 
@@ -15,4 +16,15 @@ export const formatPrice = (price) => {
   //   .toFixed(2);
   // return dollarsAmount;
   return `$${price / 100}`;
+};
+
+export const generateAmountOptions = (number) => {
+  return Array.from({ length: number }, (_, index) => {
+    const amount = index + 1;
+    return (
+      <option key={amount} value={amount}>
+        {amount}
+      </option>
+    );
+  });
 };

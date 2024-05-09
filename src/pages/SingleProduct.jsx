@@ -1,7 +1,6 @@
 import { Link, useLoaderData } from 'react-router-dom';
-import { customFetch, formatPrice } from '../utils';
+import { customFetch, formatPrice, generateAmountOptions } from '../utils';
 import { useState } from 'react';
-import React from 'react';
 
 export const loader = async ({ params }) => {
   const response = await customFetch(`/products/${params.id}`);
@@ -82,11 +81,9 @@ const SingleProduct = () => {
               id='amount'
               className='select select-secondary select-bordered select-md'
               value={amount}
-              onClick={handleAmount}
+              onChange={handleAmount}
             >
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
+              {generateAmountOptions(3)}
             </select>
           </div>
 
